@@ -16,6 +16,15 @@
  * Create GNU compatible endian macros. We use the values for __LITTLE_ENDIAN
  * and __BIG_ENDIAN based on endian.h.
  */
+#ifndef _MSC_VER
+#define LITTLE_ENDIAN   1234
+#define BIG_ENDIAN      4321
+#ifdef _LITTLE_ENDIAN
+#define BYTE_ORDER      LITTLE_ENDIAN
+#else
+#define BYTE_ORDER      BIG_ENDIAN
+#endif /* _LITTLE_ENDIAN */
+#endif // !_MSC_VER
 #ifdef __sun
 #include <sys/byteorder.h>
 #define LITTLE_ENDIAN   1234
